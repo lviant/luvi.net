@@ -1,3 +1,7 @@
+before_script:
+  - eval $(ssh-agent -s)
+  - chmod 400 "$SSH_PRIVATE_KEY"
+  - ssh-add "$SSH_PRIVATE_KEY"
 stages:
   - test
   - secret-detection
@@ -16,4 +20,6 @@ deploy site:
   image: alpine/ansible:2.18.6
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
-  script: ansible-playbook -h
+  script:
+    - cd ansible/
+    - ansible -m ping -i inventories/www.ini all
