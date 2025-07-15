@@ -1,0 +1,36 @@
+---
+enabled_sites:
+  - memes
+
+disabled_sites:
+  - homepage
+  - test
+
+all_sites: "{{enabled_sites + disabled_sites}}"
+
+enabled_werc_sites:
+  - luvi.net
+  - gameboy.luvi.net
+  - memes.luvi.net
+
+werc_people_links:
+  - "name": "ericmaala.com"
+    "url": "https://ericmaala.com"
+    "desc": "Friend's photagraphy website."
+  - "name": "stallman.org"
+    "url": "https://stallman.org/"
+    "desc": "Much like the individual, this page is absurdly fascinating."
+  - "name": "mwl.io"
+    "url": "https://mwl.io/"
+    "desc": "One of my favorite authors in the techonology space."
+  - "name": "Digitama Hatchery"
+    "url": "https://humulos.com/digimon/"
+    "desc": "Digimon."
+  - "name": "PPcenter"
+    "url": "https://ppcenter.webou.net/news/"
+    "desc": "Indie Saturn development."
+  - "name": "On being a webmaster"
+    "url": "https://justinjackson.ca/webmaster/"
+    "desc": "I can relate..."
+
+gameboy_carousel_len: 6
