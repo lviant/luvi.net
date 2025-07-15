@@ -1,0 +1,13 @@
+---
+- name: run acme-client
+  become: true
+  shell: |
+    acme-client {{ item }}
+  loop: "{{ enabled_werc_sites }}"
+
+- name: reload httpd
+  become: true
+  service:
+    name: httpd
+    state: reloaded
+
