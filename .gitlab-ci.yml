@@ -1,6 +1,3 @@
-before_script:
-  - chmod 400 $SSH_PRIVATE_KEY
-
 stages:
   - test
   - secret-detection
@@ -18,6 +15,9 @@ variables:
 
 secret_detection:
   stage: secret-detection
+
+before_script:
+  - chmod 400 $SSH_PRIVATE_KEY
 
 deploy luvi.net:
   stage: deploy
