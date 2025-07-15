@@ -1,3 +1,6 @@
+before_script:
+  - chmod 400 $SSH_PRIVATE_KEY
+
 stages:
   - test
   - secret-detection
