@@ -1,0 +1,106 @@
+---
+- name: ensure rsync is installed
+  become: true
+  openbsd_pkg:
+    name: rsync
+    state: present
+
+- name: copy httpd.conf
+  become: true
+  template:
+    src: httpd.conf
+    dest: /etc/httpd.conf
+  notify: reload httpd
+  tags:
+    - "update_config"
+
+- name: copy acme.client.conf
+  become: true
+  template:
+    src: acme-client.conf
+    dest: /etc/acme-client.conf
+  notify:
+     - reload httpd
+     - run acme-client
+  tags:
+    - "update_acme"
+    - "update_config"
+
+- name: ensure site dirs exist
+  file:
+    path: "/var/www/werc/sites/{{ item }}"
+    state: directory
+  loop: "{{ enabled_werc_sites }}"
+
+- name: sync default content
+  synchronize:
+    src: "werc/defaults/"
+    dest: "/var/www/werc/sites/{{ item }}"
+    recursive: true
+    delete: false
+    archive: false
+    times: false
+    compress: false
+    perms: false
+    owner: false
+    group: false
+  loop: "{{ enabled_werc_sites }}"
+  tags:
+    - "update_sites"
+
+- name: sync sites content
+  synchronize:
+    src: "werc/sites/{{ item }}/"
+    dest: "/var/www/werc/sites/{{ item }}"
+    recursive: true
+    delete: false
+    archive: false
+    times: false
+    compress: false
+    perms: false
+    owner: false
+    group: false
+  loop: "{{ enabled_werc_sites }}"
+  tags:
+    - "update_sites"
+
+- name: set renewals for tls
+  become: true
+  cron:
+    name: "{{ item }} tls renewal"
+    minute: 59
+    hour: 4
+    dow: 0
+    user: root
+    job: "acme-client {{ item }} && rcctl reload httpd"
+  loop: "{{ enabled_werc_sites }}"
+  tags:
+    - "update_acme"
+    - "update_config"
+
+- name: get site templates
+  local_action:
+    module: find
+    paths: "{{ role_path }}/templates/werc/sites/"
+    file_type: file
+    use_regex: false
+    recurse: true
+  register: site_templates
+  tags:
+    - "update_sites"
+
+- name: ensure templates directories exist
+  file:
+    path: "{{ item.path | replace(role_path + '/templates/werc/sites', '/var/www/werc/sites') | dirname }}"
+    state: directory
+  loop: "{{ site_templates.files }}"
+  tags:
+    - "update_sites"
+
+- name: copy site templates
+  template:
+    src: "{{ item.path }}"
+    dest: "{{ item.path | replace(role_path + '/templates/werc/sites', '/var/www/werc/sites') }}"
+  loop: "{{ site_templates.files }}"
+  tags:
+    - "update_sites"
