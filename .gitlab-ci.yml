@@ -28,4 +28,4 @@ deploy luvi.net:
     ANSIBLE_HOST_KEY_CHECKING: 'False'
   script:
     - cd ansible/
-    - ansible -u gitlab -m ping -i inventories/www.ini --key-file $SSH_PRIVATE_KEY all
+    - ansible-playbook www.yml -t update_sites -i inventories/www.ini -u gitlab --key-file $SSH_PRIVATE_KEY
