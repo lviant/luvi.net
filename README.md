@@ -4,15 +4,15 @@ _Exploring the beauty of simple web design_
 
 ## Description
 
-A little [hobby site](https://luvi.net/) and space on the internet to express myself, share my hobbies, and play with tools. This is mainly intended to experiment and learn HTTP and CSS (no JavaScript here). Ansible is used to for site templating, certificate management, and site content deployment. Inspired by sites like [](https://cat-v.org/), this site is powered by [werc]()
+A little [hobby site](https://luvi.net/) and space on the internet to express myself, share my hobbies, and play with tools. This is mainly intended to experiment and learn HTTP and CSS (no JavaScript here). Ansible is used to for site templating, certificate management, and site content deployment. Inspired by sites like [](https://cat-v.org/), this site is powered by [werc]().
 
 ### Prerequisites
 
 Using this code assumes this is being deployed on webserver running:
 
-- A modern version of [OpenBSD](https://oepnbsd.org/)
-- An installation of [plan9](https://9fans.github.io/plan9port/)
-- A running CGI-the werc [documentation](https://werc.cat-v.org/docs/web-server-setup/) explains things nicely.
+- A modern version of [OpenBSD](https://oepnbsd.org/).
+- An installation of [plan9](https://9fans.github.io/plan9port/).
+- A running CGI---the werc [documentation](https://werc.cat-v.org/docs/web-server-setup/) explains things nicely.
 
 ## Contributing
 State if you are open to contributions and what your requirements are for accepting them.
