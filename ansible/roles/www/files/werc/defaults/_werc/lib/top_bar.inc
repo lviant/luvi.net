@@ -1,4 +1,3 @@
-// TODO template this
     <div>
       <a href="https://gameboy.luvi.net">gameboy</a> |
       <a href="https://flowercards.games">hanafuda</a> |
