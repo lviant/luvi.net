@@ -16,4 +16,4 @@ Using this code assumes this is being deployed on webserver running:
 
 ## Project status
 
-I have quite a few ideas for things I'd like to do on this site. I'll get to updating it as I get the chance. A lot of commits are gonna me uploading memes ;P
+I have quite a few ideas for things I'd like to do on this site. I'll get to updating it as I get the chance. A lot of commits are gonna me uploading memes. ;P
