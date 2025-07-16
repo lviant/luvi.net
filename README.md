@@ -12,7 +12,7 @@ Using this code assumes this is being deployed on webserver running:
 
 - A modern version of [OpenBSD](https://oepnbsd.org/).
 - An installation of [plan9](https://9fans.github.io/plan9port/).
-- A running CGI---the werc [documentation](https://werc.cat-v.org/docs/web-server-setup/) explains things nicely.
+- A running CGI &emdash the werc [documentation](https://werc.cat-v.org/docs/web-server-setup/) explains things nicely.
 
 ## Contributing
 State if you are open to contributions and what your requirements are for accepting them.
