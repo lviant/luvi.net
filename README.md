@@ -4,7 +4,7 @@ _Exploring the beauty of simple web design_
 
 ## Description
 
-A little [hobby site](https://luvi.net/) and space on the internet to express myself, share my hobbies, and play with tools. This is mainly intended to experiment and learn HTTP and CSS (no JavaScript here). [Ansible](https://docs.ansible.com/ansible/latest/index.html) is used to for site templating, certificate management, and site content deployment. Inspired by sites like [cat-v.org](https://cat-v.org/), this site is powered by [werc]().
+A little [hobby site](https://luvi.net/) and space on the internet to express myself, share my hobbies, and play with tools. This is mainly intended to experiment and learn HTTP and CSS (no JavaScript here). [Ansible](https://docs.ansible.com/ansible/latest/index.html) is used to for site templating, certificate management, and site content deployment. Inspired by sites like [cat-v.org](https://cat-v.org/), this site is powered by [werc](https://werc.cat-v.org/).
 
 ### Prerequisites
 
