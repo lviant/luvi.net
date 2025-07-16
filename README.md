@@ -8,7 +8,7 @@ A little [hobby site](https://luvi.net/) and space on the internet to express my
 
 ### Prerequisites
 
-Using this code assumes this is being deployed on webserver running:
+Using this code as is assumes this is being deployed on webserver running:
 
 - A modern version of [OpenBSD](https://openbsd.org/).
 - An installation of [plan9](https://9fans.github.io/plan9port/).
