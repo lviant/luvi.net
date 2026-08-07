@@ -1,0 +1,41 @@
+---
+- name: ensure rsync is installed
+  become: true
+  openbsd_pkg:
+    name: rsync
+    state: present
+
+- name: copy httpd.conf
+  become: true
+  template:
+    src: httpd.conf
+    dest: /etc/httpd.conf
+  notify: reload httpd
+  tags:
+    - update_config
+
+- name: copy acme-client.conf
+  become: true
+  template:
+    src: acme-client.conf
+    dest: /etc/acme-client.conf
+  notify:
+    - reload httpd
+    - run acme-client
+  tags:
+    - update_acme
+    - update_config
+
+- name: set renewals for tls
+  become: true
+  cron:
+    name: "{{ item }} tls renewal"
+    minute: 59
+    hour: 4
+    dow: 0
+    user: root
+    job: "acme-client {{ item }} && rcctl reload httpd"
+  loop: "{{ enabled_werc_sites }}"
+  tags:
+    - update_acme
+    - update_config

@@ -1,0 +1,15 @@
+---
+- name: capture site role path
+  ansible.builtin.set_fact:
+    site_role_path: "{{ role_path }}"
+  tags:
+    - update_sites
+    - gameboy_luvi_net
+
+- name: deploy gameboy.luvi.net
+  ansible.builtin.include_role:
+    name: werc_base
+    tasks_from: deploy_site.yml
+  tags:
+    - update_sites
+    - gameboy_luvi_net

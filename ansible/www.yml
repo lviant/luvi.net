@@ -1,4 +1,10 @@
 ---
 - hosts: www
   roles:
-    - www
+    - werc_base
+    - role: site_luvi_net
+      when: "'luvi.net' in enabled_werc_sites"
+    - role: site_gameboy_luvi_net
+      when: "'gameboy.luvi.net' in enabled_werc_sites"
+    - role: site_memes_luvi_net
+      when: "'memes.luvi.net' in enabled_werc_sites"

@@ -1,0 +1,5 @@
+sync-to-werc:
+	scp ./index.md whis:/var/www/werc/sites/luvi.net/_docs/seizing-the-productivity-of-ai/index.md
+
+sync-from-werc:
+	scp whis:/var/www/werc/sites/luvi.net/_docs/seizing-the-productivity-of-ai/index.md ./index.md

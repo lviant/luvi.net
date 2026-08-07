@@ -1,0 +1,58 @@
+---
+- block:
+    - name: ensure site dir exists
+      file:
+        path: "/var/www/werc/sites/{{ werc_site }}"
+        state: directory
+
+    - name: sync default content
+      synchronize:
+        src: "{{ role_path }}/files/werc/defaults/"
+        dest: "/var/www/werc/sites/{{ werc_site }}"
+        recursive: true
+        delete: false
+        archive: false
+        times: false
+        compress: false
+        perms: false
+        owner: false
+        group: false
+
+    - name: sync site content
+      synchronize:
+        src: "{{ site_role_path }}/files/"
+        dest: "/var/www/werc/sites/{{ werc_site }}"
+        recursive: true
+        delete: false
+        archive: false
+        times: false
+        compress: false
+        perms: false
+        owner: false
+        group: false
+
+    - name: get site templates
+      local_action:
+        module: find
+        paths: "{{ site_role_path }}/templates/"
+        file_type: file
+        use_regex: false
+        recurse: true
+      register: site_templates
+
+    - name: ensure template directories exist
+      file:
+        path: "{{ item.path | replace(site_role_path + '/templates', '/var/www/werc/sites/' + werc_site) | dirname }}"
+        state: directory
+      loop: "{{ site_templates.files }}"
+      when: site_templates.files | length > 0
+
+    - name: copy site templates
+      template:
+        src: "{{ item.path }}"
+        dest: "{{ item.path | replace(site_role_path + '/templates', '/var/www/werc/sites/' + werc_site) }}"
+      loop: "{{ site_templates.files }}"
+      when: site_templates.files | length > 0
+  tags:
+    - update_sites
+    - "{{ werc_site_tag }}"
