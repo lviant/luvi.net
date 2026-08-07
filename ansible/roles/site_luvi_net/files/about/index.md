@@ -6,4 +6,4 @@
 
 ## whoami
 
-Hello. I'm a tech woker and evangelist, Infrastructure Engineer, fledgling programmer, and hobbyist photographer. I am not an active participant social media so I'm reverting to _caveman_ ways of sharing my art and interests on the vast _World Wide Web_.
+Hello. I'm a tech woker and evangelist, infrastructure engineer, fledgling programmer, and hobbyist photographer. I am not an active participant social media so I'm reverting to _caveman_ ways of sharing my art and interests on the vast _World Wide Web_.
