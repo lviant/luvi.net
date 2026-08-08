@@ -1,4 +1,4 @@
-{% for f in lookup('fileglob', role_path + '/files/*') | split(',') | select('match', '.*\.(jpg|gif|png|webp)$') -%}
+{% for f in lookup('fileglob', site_role_path + '/files/*', wantlist=True) | select('match', '.*\.(jpg|gif|png|webp)$') -%}
 <div class="responsive">
   <div class="container">
     <a href="{{ f | basename }}">

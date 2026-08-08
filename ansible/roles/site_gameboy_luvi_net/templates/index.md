@@ -4,7 +4,7 @@
   <div class="carousel">
     <ul class="slides">
 {% set bmp_files = [] -%}
-{% for f in lookup('filetree', role_path + '/files')-%}
+{% for f in lookup('filetree', site_role_path + '/files')-%}
     {% if 'BMP' in f.path -%}
         {{ bmp_files.append(f.path) }}
     {% endif %}
