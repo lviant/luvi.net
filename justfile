@@ -22,6 +22,10 @@ deploy user="": (_playbook user "-t update_sites")
 
 alias deploy-sites := deploy
 
+# Verify playbook syntax.
+[arg("user", short="u", long="user")]
+check user="": (_playbook user "--syntax-check")
+
 # Deploy a single site by snake_case tag (werc_site_tag).
 [arg("user", short="u", long="user")]
 deploy-luvi user="": (_playbook user "-t luvi_net")
@@ -47,6 +51,6 @@ deploy-acme user="": (_playbook user "-t update_acme")
 [arg("user", short="u", long="user")]
 deploy-all user="": (_playbook user)
 
-# Verify playbook syntax.
-[arg("user", short="u", long="user")]
-check user="": (_playbook user "--syntax-check")
+# Regenerate web/static/favicon.ico from img/icon.png (16x16 + 32x32).
+favicon-luvi:
+    magick img/luvi-icon.png -define icon:auto-resize=16,32 ansible/roles/site_luvi_net/files/favicon.ico
