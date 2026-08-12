@@ -42,3 +42,7 @@ werc_projects:
     name: "luisviant.com"
     url: "https://luisviant.com"
     desc: "Personal photography portfolio."
+  - emoji: "📡"
+    name: "live.luvi.net"
+    url: "https://live.luvi.net"
+    desc: "Somewhere I can broadcast my livestreams to, because _fuck_ Bezos. _(some [JavaScript](https://github.com/video-dev/hls.js/))_"
