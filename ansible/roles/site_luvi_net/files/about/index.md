@@ -4,7 +4,7 @@
 
 > _~ Richard Stallman_
 
-## whoami
+## `whoami`
 
 Hello, I'm Lu &#x1F44B; I'm a tech worker and evangelist, infrastructure engineer, fledgling Go programmer, and photographer. This site is a collection of my thoughts, art, projects and interests in the form of a _lo-web_ home page notwithstanding a lack a social media engagement.
 
@@ -15,6 +15,11 @@ This project was mainly started to experiment and play around HTML and CSS (no [
 ### Built with
 
 - &#x1F421; [OpenBSD](https://openbsd.org/) and [httpd](https://man.openbsd.org/httpd.8).
-- &#x1F430; A [port](https://9fans.github.io/plan9port/) [Plan 9 from Bell Labs](https://en.wikipedia.org/wiki/Plan_9_from_Bell_Labs).
+- &#x1F430; A [port](https://9fans.github.io/plan9port/) of [Plan 9 from Bell Labs](https://en.wikipedia.org/wiki/Plan_9_from_Bell_Labs).
 - &#x1F308; The magic of [CGI](https://en.wikipedia.org/wiki/Common_Gateway_Interface).
 - &#x1F9F0; [Ansible](https://docs.ansible.com/projects/ansible/latest/index.html) for server configuration and templating.
+
+### _lo-web_ fun
+
+<img src="/_assets/vim.gif" alt="made-with-vim" height="31px" width="88px">
+<a href="https://chawan.net/"><img src="https://chawan.net/banner/compatible_with_chawan.png" alt="compatible-with-chawan" height="31px" width="88px"></a>
