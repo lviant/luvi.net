@@ -4,6 +4,10 @@
 
 > _~ Richard Stallman_
 
+<p style="text-align: center;">
+<i>Last updated: {{ '%Y-%m-%d %R %Z' | strftime }}</i>
+</p>
+
 ## `whoami`
 
 Hello, I'm Lu &#x1F44B; I'm a tech worker and evangelist, infrastructure engineer, fledgling Go programmer, and photographer. This site is a collection of my thoughts, art, projects and interests in the form of a _lo-web_ home page notwithstanding a lack a social media engagement.
@@ -21,5 +25,12 @@ This project was mainly started to experiment and play around HTML and CSS (no [
 
 ### _lo-web_ fun
 
-<img src="/_assets/vim.gif" alt="made-with-vim" height="31px" width="88px">
-<a href="https://chawan.net/"><img src="https://chawan.net/banner/compatible_with_chawan.png" alt="compatible-with-chawan" height="31px" width="88px"></a>
+{% for b in werc_about_banners %}
+{% if b['url'] is defined %}
+<a href="{{ b['url'] }}">
+{% endif %}
+<img src="{{ b['src'] }}" alt="{{ b['name'] }}" height="31px" width="88px">
+{% if b['url'] is defined %}
+</a>
+{% endif %}
+{% endfor %}

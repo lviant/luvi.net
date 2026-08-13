@@ -2,6 +2,14 @@
 werc_site: luvi.net
 werc_site_tag: luvi_net
 
+werc_about_banners:
+  - "name": "made-with-vim"
+    "src": "/_assets/vim.gif"
+    "url": null
+  - "name": "compatible-with-chawan"
+    "src": "https://chawan.net/banner/compatible_with_chawan.png"
+    "url": "https://chawan.net/"
+
 werc_people_links:
   - "name": "ericmaala.com"
     "url": "https://ericmaala.com"
