@@ -2,7 +2,10 @@
     <nav>
 % cat `{ get_lib_file top_bar.inc }
     </nav>
-    <h1><a class="h-card" href="/">%($"siteTitle%) <span id="headerSubTitle">%($"siteSubTitle%)</span></a></h1>
+    <div class="h-card"><h1>
+        <div class="p-name" hidden>Luis Viant</h>
+        <a class="u-url" href="/">%($"siteTitle%) <span id="headerSubTitle">%($"siteSubTitle%)</span></a>
+    </h1></div>
 </header>
 
 % if(! ~ $#handlers_bar_left 0) {
