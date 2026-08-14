@@ -5,7 +5,7 @@
 > _~ Richard Stallman_
 
 <p style="text-align: center;">
-<i>Last updated: {{ '%Y-%m-%d %R %Z' | strftime }}</i>
+<small><i>Last updated: {{ '%Y-%m-%d %R %Z' | strftime }}</i></small>
 </p>
 
 ## `whoami`
