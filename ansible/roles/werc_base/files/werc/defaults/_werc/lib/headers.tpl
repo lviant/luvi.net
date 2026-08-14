@@ -1,8 +1,29 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <head>
 
     <title>%($pageTitle%)</title>
+
+    <!-- Primary Meta Tags -->
+    <title>luvi.net Exploring the beauty of simple web design🌹🐝</title>
+    <meta name="title" content="luvi.net Exploring the beauty of simple web design🌹🐝" />
+    <meta name="description" content="Take a moment for yourself, and enjoy something wonderful." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://luvi.net/" />
+    <meta property="og:title" content="luvi.net Exploring the beauty of simple web design🌹🐝" />
+    <meta property="og:description" content="Take a moment for yourself, and enjoy something wonderful." />
+    <meta property="og:image" content="https://metatags.io/images/meta-tags.png" />
+
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://luvi.net/" />
+    <meta property="twitter:title" content="luvi.net Exploring the beauty of simple web design🌹🐝" />
+    <meta property="twitter:description" content="Take a moment for yourself, and enjoy something wonderful." />
+    <meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" />
+
+    <!-- Meta Tags Generated with https://metatags.io -->
 
     <link rel="stylesheet" href="/pub/style/style.css" type="text/css" media="screen, handheld" title="default">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -16,6 +37,9 @@
 % # Legacy charset declaration for backards compatibility with non-html5 browsers.
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="application-name" content"luvi-net">
+    <meta name="author" content"Luis Viant">
+    <meta name="keywords" content"Luis Viant, Viant, luvi, gameboy, hanafuda, photography, game boy, memes, go, golang">
 
 % if(! ~ $#meta_description 0)
 
