@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P">
 
-# Misc Fun
+## Misc Fun
 
 Uploaded: 2024.12.07
 

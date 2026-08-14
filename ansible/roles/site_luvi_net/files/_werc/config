@@ -29,6 +29,6 @@ enabled_apps=()
 # Default site variables, must be set in initrc.local or _werc/config, only siteTitle is required.
 #masterSite=cat-v.org # Not required!
 siteTitle='luvi.net'
-siteSubTitle='Exploring the beauty of simple web design&#x1F339&#x1F41D'
+siteSubTitle='Exploring the beauty of simple web design&#x1F339;&#x1F41D;'
 
 conf_hide_paths _werc _docs
