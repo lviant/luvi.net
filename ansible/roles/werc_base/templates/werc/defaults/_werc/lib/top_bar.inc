@@ -3,5 +3,5 @@
       <a href="{{ p['url'] }}"{% if p.get('target_blank') %} target="_blank"{% endif %}>{{ p['label'] }}</a> |
 {% endfor %}
       <a href="https://gitlab.com/luisviant/luvi.net" target="_blank">src</a> |
-      <a href="https://luvi.net" rel=me>luvi.net</a>
+      <a href="https://luvi.net">luvi.net</a>
     </div>
