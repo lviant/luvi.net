@@ -26,8 +26,9 @@
     %($"extraHeaders%)
 
     <div class="h-card" hidden>
-        <span class="p-name">Luis Viant</span>
-        <a class="h-card p-org u-url" href="/">%($"siteTitle%)</a>
+        <a class="p-name u-url" href="https://luvi.net/">Luis Viant</a>
+        <span class="u-email">lu@luvi.net</span>
+        <a class="h-card p-org u-url" href="https://luvi.net/">luvi.net</a>
 		<img class="u-photo" src="https://avatars.githubusercontent.com/u/5025623?s=400&u=cbd54fd93869db9cb15683e9e852cf4c7f543f04&v=4"></img>
 		<span class="p-note">Hello, I'm Lu &#x1F44B; I'm a tech worker and evangelist, infrastructure engineer, fledgling Go programmer, and photographer. This site is a collection of my thoughts, art, projects and interests in the form of a <i>lo-web</i> home page notwithstanding a lack a social media engagement.</span>
     </div>
