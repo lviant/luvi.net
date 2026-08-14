@@ -10,7 +10,7 @@
 
 ## `whoami`
 
-<p class="h-card"><span class="p-note">Hello, I'm Lu &#x1F44B; I'm a tech worker and evangelist, infrastructure engineer, fledgling Go programmer, and photographer. This site is a collection of my thoughts, art, projects and interests in the form of a _lo-web_ home page notwithstanding a lack a social media engagement.</span></p>
+Hello, I'm Lu &#x1F44B; I'm a tech worker and evangelist, infrastructure engineer, fledgling Go programmer, and photographer. This site is a collection of my thoughts, art, projects and interests in the form of a _lo-web_ home page notwithstanding a lack a social media engagement.
 
 ## Tech stuff
 
