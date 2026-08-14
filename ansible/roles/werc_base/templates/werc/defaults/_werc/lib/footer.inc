@@ -1,6 +1,6 @@
 <div></div>
 
-<div class="h-card">
+<div class="h-card" id="site-card">
 	{% if werc_site == 'memes.luvi.net' %}<small class="copyright__content">Memes are shared for commentary and aren't covered by the license; rights belong to their original creators,</small>{% endif %}
 	<small class="copyright__content"><a class="h-card p-org u-url u-uid" rel=me href="https://luvi.net/">luvi.net</a> &copy {{ now(fmt='%Y') }} by <a rel="me" href="https://luvi.net/about">Luis Viant</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> &#x1F16D;&#x1F16F;&#x1F10F;&#x1F10E;,</small>
 	<small class="copyright__content"><a href="http://werc.cat-v.org/" target="_blank">Powered by werc</a></small>
