@@ -2,7 +2,7 @@
     <nav>
 % cat `{ get_lib_file top_bar.inc }
     </nav>
-    <div class="h-card"><h1>
+    <div class="h-card" id="site-card"><h1>
         <div class="p-name" hidden>Luis Viant</div>
         <a class="u-url" href="/">%($"siteTitle%) <span id="headerSubTitle">%($"siteSubTitle%)</span></a>
     </h1></div>
