@@ -18,16 +18,6 @@
         owner: false
         group: false
 
-    - name: copy werc default footer template
-      template:
-        src: werc/defaults/_werc/lib/footer.inc
-        dest: "/var/www/werc/sites/{{ werc_site }}/_werc/lib/footer.inc"
-
-    - name: copy werc default top bar template
-      template:
-        src: werc/defaults/_werc/lib/top_bar.inc
-        dest: "/var/www/werc/sites/{{ werc_site }}/_werc/lib/top_bar.inc"
-
     - name: sync site content
       synchronize:
         src: "{{ site_role_path }}/files/"

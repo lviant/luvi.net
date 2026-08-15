@@ -29,5 +29,14 @@
 </article>
 
 <footer>
+<div></div>
+
+<div>
+% if(! ~ $#cc_exception 0) {
+    <small class="copyright__content">%($cc_exception%)</small>
+% }
 % cat `{ get_lib_file footer.inc }
+</div>
+
+<div></div>
 </footer>
