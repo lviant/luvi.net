@@ -1,13 +1,14 @@
 # Ansible Deployment
 
-This directory deploys the [luvi.net](https://luvi.net/) [werc](https://werc.cat-v.org/) sites to an OpenBSD host. One shared role handles server configuration; each site has its own role for content and templates.
+If you deploy or extend [luvi.net](https://luvi.net/) from this repo, this directory holds the Ansible playbooks and roles. One shared role handles server configuration; each site has its own role for content and templates. Everything targets an OpenBSD host running [werc](https://werc.cat-v.org/).
 
 ## Layout
 
 ```
 ansible/
 ├── www.yml                 # Playbook (werc_base + enabled site roles)
-├── inventory.ini           # Host inventory
+├── inventory.ini           # Host inventory (gitignored)
+├── inventory.ini.example   # Template with placeholder host
 ├── group_vars/
 │   └── www.yml             # enabled_werc_sites, werc_meta_keywords, werc_projects
 └── roles/
@@ -26,8 +27,8 @@ Server-wide werc setup, not tied to a single site:
 | `tasks/main.yml` | rsync package, `httpd.conf`, `acme-client.conf`, TLS renewal cron |
 | `tasks/deploy_site.yml` | Shared site deploy logic (included by site roles) |
 | `files/initrc.local` | werc global settings; sets `masterSite` so subsites inherit layout partials |
-| `templates/_werc/config` | Per-site werc config rendered at deploy time |
-| `templates/site.webmanifest` | Per-site PWA manifest rendered at deploy time |
+| `templates/_werc/config` | Per-site werc config rendered at deploy |
+| `templates/site.webmanifest` | Per-site PWA manifest rendered at deploy |
 | `templates/httpd.conf` | OpenBSD httpd vhosts (one block per entry in `enabled_werc_sites`) |
 | `templates/acme-client.conf` | Let's Encrypt domains |
 | `handlers/main.yml` | Reload httpd, run acme-client |
@@ -56,16 +57,16 @@ Per-site role layout:
 | `files/_werc/lib/` | Layout partials; luvi.net holds the shared set, subsites inherit them |
 | `files/_assets/` | Favicons, touch icons, and other static assets served at `/_assets/` |
 | `files/favicon.ico` | Legacy favicon (regenerate with `just favicons-luvi` or `just favicons <site> <source>`) |
-| `templates/` | Jinja2 pages rendered at deploy time (e.g. luvi.net `about/`, `people/`, `projects/`) |
+| `templates/` | Jinja2 pages rendered at deploy (e.g. luvi.net `about/`, `people/`, `projects/`) |
 | `tasks/main.yml` | Calls `werc_base` `deploy_site.yml` with this role's `files/` and `templates/` |
 
 ## Shared Configuration
 
+Deploy renders `_werc/config` and `site.webmanifest` from `werc_base/templates/`. Do not hand-edit those files in site roles.
+
 ### Rendered `_werc/config`
 
-Deploy renders `werc_base/templates/_werc/config` at deploy time. Do not hand-edit per-site copies.
-
-The template looks up `werc_projects` by matching `name` to `werc_site` (from `vars/main.yml`). This includes the `luvi.net` entry; the template has no per-site special case.
+The rendered config sets rc variables that `headers.tpl` reads (`$pageTitle`, `$site_url`, `$meta_description`, `$meta_keywords`). A Jinja template looks up `werc_projects` by matching `name` to `werc_site` (from `vars/main.yml`). That lookup includes the `luvi.net` entry; the template has no per-site special case.
 
 | `werc_projects` field | rc variable | Notes |
 |-----------------------|-------------|-------|
@@ -77,13 +78,9 @@ The template looks up `werc_projects` by matching `name` to `werc_site` (from `v
 | `werc_cc_exception` | `cc_exception` | omitted when unset |
 | (from `werc_meta_keywords`) | `meta_keywords` | shared across all sites |
 
-`headers.tpl` reads `$pageTitle`, `$site_url`, `$meta_description`, and `$meta_keywords` from that rendered config.
-
 ### Rendered `site.webmanifest`
 
-Deploy also renders `werc_base/templates/site.webmanifest` for each site. Do not hand-edit per-site copies.
-
-The template uses the same `werc_projects` lookup as `_werc/config`:
+Each site gets a PWA manifest with icon paths under `/_assets/android-chrome-*.png` in that role's `files/_assets/`. Field values come from the same `werc_projects` lookup as `_werc/config`:
 
 | `werc_projects` field | manifest field |
 |-----------------------|----------------|
@@ -92,8 +89,6 @@ The template uses the same `werc_projects` lookup as `_werc/config`:
 | `werc_meta_desc` | `description` (omitted when unset) |
 | `url` | `start_url` (omitted when unset) |
 
-Icon paths point at `/_assets/android-chrome-*.png` in each site's `files/_assets/`.
-
 Edit `group_vars/www.yml` and/or site templates to change titles, meta tags, or the projects list.
 
 ### Deploy Order
@@ -101,17 +96,13 @@ Edit `group_vars/www.yml` and/or site templates to change titles, meta tags, or 
 For each site:
 
 1. Template `_werc/config` and `site.webmanifest` from `werc_base`
-2. Remove `_werc/lib/headers.tpl` and `_werc/lib/default_master.tpl` from subsites
+2. Remove inherited layout partials from subsites (see Layout Inheritance)
 3. Sync site role `files/` (a subsite shipping its own copy overrides the inherited one)
 4. Render site role `templates/`
 
 ### Layout Inheritance
 
-Layout partials live in luvi.net `_werc/lib/`. Subsites inherit them via `masterSite`.
-
-`headers.tpl` and `default_master.tpl` resolve before `_werc/config` is read. `masterSite` is therefore set in `werc_base/files/initrc.local` (tag `update_config`).
-
-Deploy removes those two files from subsite roles so inheritance applies.
+Layout partials live in luvi.net `_werc/lib/`. Subsites inherit them through `masterSite`, set in `werc_base/files/initrc.local` (tag `update_config`), because `headers.tpl` and `default_master.tpl` resolve before `_werc/config` is read. Deploy removes those two files from subsite roles so the inherited copies apply instead of stale local overrides.
 
 ## Variables
 
@@ -119,7 +110,8 @@ Deploy removes those two files from subsite roles so inheritance applies.
 
 - `enabled_werc_sites`: hostnames the playbook deploys
 - `werc_meta_keywords`: shared keywords string; becomes `meta_keywords` in rendered config (see Shared Configuration)
-- `werc_projects`: projects page data (`name`, `url`, `desc`, `emoji`) plus per-site werc metadata (`werc_*` fields; see mapping table above). Includes a `luvi.net` entry (excluded from the projects page loop) and off-site links not deployed by Ansible
+- `werc_projects`: projects page data (`name`, `url`, `desc`, `emoji`) and per-site werc metadata (`werc_*` fields; see mapping table above)
+- `werc_projects` also lists a `luvi.net` entry (excluded from the projects page loop) and off-site links not deployed by Ansible
 
 **Per-site (`vars/main.yml`):**
 
@@ -138,7 +130,18 @@ enabled_werc_sites:
   - memes.luvi.net
 ```
 
-The playbook applies each site role only when its hostname appears in this list. `site_test_luvi_net` exists for local experimentation but is omitted from `www.yml`.
+The playbook applies each site role only when its hostname appears in this list. `site_test_luvi_net` is a local mirror for experimentation. It is not listed in `www.yml`.
+
+## Local Setup
+
+`inventory.ini` is gitignored since it names the real deploy host. Copy the template and fill in your host before running anything locally:
+
+```bash
+cp ansible/inventory.ini.example ansible/inventory.ini
+# edit ansible/inventory.ini with the real ansible_host
+```
+
+GitLab CI supplies inventory through a CI/CD file variable (see `.gitlab-ci.yml`).
 
 ## Running
 
@@ -157,7 +160,7 @@ just deploy-all      # everything
 just check           # playbook syntax check
 ```
 
-Assumes your SSH key is loaded in the agent. Override the remote user when needed:
+Local runs assume your SSH key is loaded in the agent. Override the remote user when needed:
 
 ```bash
 just deploy -u you
@@ -194,9 +197,7 @@ ansible-playbook www.yml -t update_config -i inventory.ini
 ansible-playbook www.yml -t update_acme -i inventory.ini
 ```
 
-Site deploy tasks carry two tags: `update_sites` (all sites) and the per-role `werc_site_tag` (e.g. `luvi_net` for `luvi.net`, `gameboy_luvi_net` for `gameboy.luvi.net`).
-
-CI runs `update_sites` only. It syncs werc defaults, static site files, and rendered templates to `/var/www/werc/sites/<hostname>/` on the target host.
+Site deploy tasks carry two tags: `update_sites` (all sites) and the per-role `werc_site_tag` (e.g. `luvi_net` for `luvi.net`). CI runs `update_sites` only, syncing content to `/var/www/werc/sites/<hostname>/` on the target host.
 
 ## Adding a New Site
 
@@ -207,7 +208,7 @@ CI runs `update_sites` only. It syncs werc defaults, static site files, and rend
 5. Add the role to `www.yml` with a `when: "'example.luvi.net' in enabled_werc_sites"` guard.
 6. Run `just deploy-config` once so httpd and acme-client pick up the new vhost and certificate.
 
-Do not create `files/_werc/config`; that file is rendered from `werc_base`.
+Do not add `files/_werc/config`; see Shared Configuration.
 
 ## Server Paths
 

@@ -1,2 +1,3 @@
 **/_assets/*.png
 favicon.ico
+/ansible/inventory.ini
