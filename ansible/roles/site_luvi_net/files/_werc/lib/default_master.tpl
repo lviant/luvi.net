@@ -44,7 +44,7 @@
 <small class="copyright__content">
     <a href="https://luvi.net/">luvi.net</a>
     &copy;
-    2026
+% echo `{date | sed 's/.* //'}
     by
 % cat `{ get_lib_file footer.inc }
 </small>

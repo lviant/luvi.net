@@ -15,17 +15,6 @@
         src: 'roles/werc_base/templates/_werc/config'
         dest: "/var/www/werc/sites/{{ werc_site }}/_werc/config"
 
-    # werc resolves these two before _werc/config is read, so removing them
-    # here is what makes them inherit from the main site.
-    - name: remove inherited layout files from subsites
-      file:
-        path: "/var/www/werc/sites/{{ werc_site }}/_werc/lib/{{ item }}"
-        state: absent
-      loop:
-        - headers.tpl
-        - default_master.tpl
-      when: werc_site != 'luvi.net'
-
     - name: sync site content
       synchronize:
         src: "{{ site_role_path }}/files/"
