@@ -38,6 +38,10 @@ p { padding: 1em; }
 
 blockquote { font-size: 84% }
 
+.last-updated {
+	height: 200vh;
+}
+
 /* footer */
 footer { background-color:FloralWhite; position: fixed; bottom:0; width: 100%; }
 footer a { color: inherit; }

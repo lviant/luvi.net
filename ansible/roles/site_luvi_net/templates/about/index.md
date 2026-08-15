@@ -4,10 +4,6 @@
 <br><br>
 > _~ Richard Stallman_
 
-<p style="text-align: center;">
-<small><i>Last updated: {{ '%Y-%m-%d %R %Z' | strftime }}</i></small>
-</p>
-
 ### `whoami`
 
 Hello, I'm Lu &#x1F44B; I'm a tech worker and evangelist, infrastructure engineer, fledgling Go programmer, and photographer. This site is a collection of my thoughts, art, projects and interests in the form of a _lo-web_ home page notwithstanding a lack a social media engagement.

@@ -6,3 +6,9 @@
 
 Please stay a while and enjoy my [interests](/projects) with me.
 
+<div class="last-updated">
+<p>
+<small><i>Last updated: {{ '%Y-%m-%d %R %Z' | strftime }}</i></small>
+</p>
+</div>
+
