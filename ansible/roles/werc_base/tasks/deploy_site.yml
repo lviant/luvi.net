@@ -15,6 +15,11 @@
         src: 'roles/werc_base/templates/_werc/config'
         dest: "/var/www/werc/sites/{{ werc_site }}/_werc/config"
 
+    - name: copy site webmanifest
+      template:
+        src: 'roles/werc_base/templates/site.webmanifest'
+        dest: "/var/www/werc/sites/{{ werc_site }}/site.webmanifest"
+
     - name: sync site content
       synchronize:
         src: "{{ site_role_path }}/files/"

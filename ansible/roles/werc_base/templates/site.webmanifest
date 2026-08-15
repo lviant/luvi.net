@@ -1,0 +1,19 @@
+{% set site_project = werc_projects | selectattr("name", "equalto", werc_site) | first | default({}) %}
+{%- set manifest = {
+  "name": site_project.get('werc_site_title') | default(werc_site, true),
+  "short_name": werc_site.split('.')[0],
+  "icons": [
+    {"src": "/_assets/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "/_assets/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png"}
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
+} -%}
+{%- if site_project.get('werc_meta_desc') -%}
+{%- set manifest = manifest | combine({"description": site_project.get('werc_meta_desc')}) -%}
+{%- endif -%}
+{%- if site_project.get('url') -%}
+{%- set manifest = manifest | combine({"start_url": site_project.get('url')}) -%}
+{%- endif -%}
+{{ manifest | to_json }}

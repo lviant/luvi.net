@@ -6,6 +6,6 @@
 
 ### Projects hosted at luvi.net
 
-{% for p in werc_projects %}
+{% for p in werc_projects if p['name'] != 'luvi.net' %}
 - {{ p['emoji'] }} *[{{ p['name'] }}]({{ p['url'] }}) ~* {{ p['desc'] }}
 {% endfor %}

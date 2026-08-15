@@ -15,7 +15,7 @@
 %    echo '    <link rel="stylesheet" href="/_werc/pub/style.css" type="text/css" media="screen" title="default">'
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="keywords" content="Luis Viant, Viant, luvi, gameboy, hanafuda, photography, game boy, memes, go, golang">
+    <meta name="keywords" content="%($meta_keywords%)">
 
 % {
     <meta name="title" content="%($pageTitle%)" />

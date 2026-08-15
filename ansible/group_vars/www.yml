@@ -4,23 +4,39 @@ enabled_werc_sites:
   - gameboy.luvi.net
   - memes.luvi.net
 
+werc_meta_keywords: "Luis Viant, Viant, luvi, gameboy, hanafuda, photography, game boy, memes, go, golang"
+
 werc_projects:
+  - name: "luvi.net"
+    url: "https://luvi.net/"
+    werc_page_title: null
+    werc_site_title: "luvi.net"
+    werc_site_sub_title: "Exploring the beauty of simple web design&#x1F339;&#x1F41D;"
+    werc_meta_desc: "Take a moment for yourself, and enjoy something wonderful."
   - emoji: "&#x1F3AE;"
     name: "gameboy.luvi.net"
     url: "https://gameboy.luvi.net/"
-    desc: "128×128px photography from a Game Boy Camera."
-    meta_desc: null
+    desc: "128&times;128px photography from a Game Boy Camera."
+    werc_meta_desc: null
+    werc_page_title: null
+    werc_site_sub_title: "128&times;128px photography from a Game Boy Camera"
   - emoji: "&#x1F3B4;"
     name: "flowercards.games"
     url: "https://flowercards.games/"
     desc: "&#x1F6A7; WIP Hanafuda video game blog."
-    meta_desc: null
+    werc_meta_desc: null
+    werc_page_title: "flowercards | luvi.net"
+    werc_site_title: "&#x82B1;&#x672D;"
+    werc_site_sub_title: "&#x1F6A7; WIP Hanafuda video game blog"
   - emoji: "&#x1F5C3;"
     name: "memes.luvi.net"
     url: "https://memes.luvi.net/"
-    desc: "A junk drawer of memes."
-    cc_exception: "Memes are for shared commentary and not covered by the following license; rights belong to their original creators,"
-    meta_desc: null
+    desc: "a junk drawer of memes."
+    werc_cc_exception: "memes are for shared commentary and not covered by the following license; rights belong to their original creators,"
+    werc_page_title: null
+    werc_site_title: "a junk drawer of memes"
+    werc_site_sub_title: null
+    werc_meta_desc: "look ma, im scheming and meming"
   - emoji: "&#x1F4F7;"
     name: "luisviant.com"
     url: "https://luisviant.com/"
