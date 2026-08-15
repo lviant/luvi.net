@@ -37,10 +37,18 @@
 <div></div>
 
 <div>
-% if(! ~ $#cc_exception 0) {
+
+% if(! ~ $"cc_exception '') {
     <small class="copyright__content">%($cc_exception%)</small>
 % }
+<small class="copyright__content">
+    <a href="https://luvi.net/">luvi.net</a>
+    &copy;
+    2026
+    by
 % cat `{ get_lib_file footer.inc }
+</small>
+
 </div>
 
 <div></div>

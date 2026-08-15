@@ -11,7 +11,15 @@ siteTitle='{% if werc_site != "luvi.net" %}{{ werc_site }}{% else %}luvi.net{% e
 siteSubTitle='{% if werc_site != "luvi.net" %}{{ werc_projects | selectattr("name", "equalto", werc_site) | map(attribute="desc") | first }}{% else %}Exploring the beauty of simple web design&#x1F339;&#x1F41D;{% endif %}'
 
 site_url='{% if werc_site != "luvi.net" %}{{ werc_projects | selectattr("name", "equalto", werc_site) | map(attribute="url") | first }}{% endif %}'
-enabled_sites=({% for site in enabled_werc_sites %}{{ site | split('.') | first }} {% endfor %})
-meta_description='{% if werc_site != "luvi.net"%}{{ werc_projects | selectattr("name", "equalto", werc_site) | map(attribute="meta_desc") | first }}{% else %}Take a moment for yourself, and enjoy something wonderful.{% endif %}'
+enabled_sites=({% for site in enabled_werc_sites %}{% if site != 'luvi.net' %}{{ site | split('.') | first }} {% endif %}{% endfor %})
+{% set site_project = werc_projects | selectattr("name", "equalto", werc_site) | first | default({}) %}
+{% if werc_site == "luvi.net" %}
+meta_description='Take a moment for yourself, and enjoy something wonderful.'
+{% elif site_project.meta_desc is defined and site_project.meta_desc %}
+meta_description='{{ site_project.meta_desc | replace("'", "''") }}'
+{% endif %}
+{% if site_project.cc_exception is defined and site_project.cc_exception %}
+cc_exception='{{ site_project.cc_exception | replace("'", "''") }}'
+{% endif %}
 
 conf_hide_paths _werc _docs

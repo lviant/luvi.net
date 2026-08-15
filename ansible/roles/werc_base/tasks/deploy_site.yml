@@ -10,27 +10,21 @@
         path: "/var/www/werc/sites/{{ werc_site }}/_werc"
         state: directory
 
-    - debug:
-        msg: "{{ '.' | realpath }}"
-
     - name: copy site werc config
       template:
         src: 'roles/werc_base/templates/_werc/config'
         dest: "/var/www/werc/sites/{{ werc_site }}/_werc/config"
 
-    # deprecated: needed as headers.tpl not inheriting properly when missing
-    - name: sync default content
-      synchronize:
-        src: "{{ role_path }}/files/werc/defaults/"
-        dest: "/var/www/werc/sites/{{ werc_site }}"
-        recursive: true
-        delete: false
-        archive: false
-        times: false
-        compress: false
-        perms: false
-        owner: false
-        group: false
+    # werc resolves these two before _werc/config is read, so removing them
+    # here is what makes them inherit from the main site.
+    - name: remove inherited layout files from subsites
+      file:
+        path: "/var/www/werc/sites/{{ werc_site }}/_werc/lib/{{ item }}"
+        state: absent
+      loop:
+        - headers.tpl
+        - default_master.tpl
+      when: werc_site != 'luvi.net'
 
     - name: sync site content
       synchronize:

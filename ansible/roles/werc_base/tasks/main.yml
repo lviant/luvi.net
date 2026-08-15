@@ -5,6 +5,14 @@
     name: rsync
     state: present
 
+- name: copy werc initrc.local
+  become: true
+  copy:
+    src: initrc.local
+    dest: /var/www/werc/etc/initrc.local
+  tags:
+    - update_config
+
 - name: copy httpd.conf
   become: true
   template:

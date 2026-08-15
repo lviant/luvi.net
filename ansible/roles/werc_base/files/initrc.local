@@ -1,0 +1,4 @@
+# Managed by ansible. Sets masterSite globally: werc resolves headers.tpl and
+# default_master.tpl before reading a site's _werc/config, so subsites can
+# only inherit them from the main site this way.
+masterSite='luvi.net'
