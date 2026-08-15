@@ -5,6 +5,7 @@
         path: "/var/www/werc/sites/{{ werc_site }}"
         state: directory
 
+    # deprecated: needed as headers.tpl not inheriting properly when missing
     - name: sync default content
       synchronize:
         src: "{{ role_path }}/files/werc/defaults/"
