@@ -33,3 +33,4 @@ siteTitle='a junk drawer of memes'
 site_url='memes.luvi.net'
 meta_description='𝖑ℴ𝖔𝓀 𝓂𝖆, 𝒾𝖒 𝖘𝒸𝖍ℯ𝖒𝒾𝖓ℊ 𝒶𝖓𝒹 𝓂𝖊𝓂𝖎𝓃𝖌'
 cc_exception='Memes are shared for commentary and are not covered by this license; rights belong to their original creators,'
+enabled_sites=(gameboy hanafuda memes live)

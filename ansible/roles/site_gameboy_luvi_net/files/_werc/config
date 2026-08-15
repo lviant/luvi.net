@@ -31,3 +31,4 @@ masterSite='luvi.net'
 siteTitle='gameboy.luvi.net'
 siteSubTitle='128x128px photography'
 site_url='gameboy.luvi.net'
+enabled_sites=(gameboy hanafuda memes)

@@ -1,6 +1,11 @@
 <header>
     <nav>
+    <div>
+% for(i in $enabled_sites) {
+        <a href="https://%($i%).luvi.net/" rel="me">%($i%)</a> |
+% }
 % cat `{ get_lib_file top_bar.inc }
+    </div>
     </nav>
     <h1><a href="/">%($"siteTitle%) <span id="headerSubTitle">%($"siteSubTitle%)</span></a></h1>
 </header>

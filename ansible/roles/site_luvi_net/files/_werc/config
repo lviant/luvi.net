@@ -32,5 +32,6 @@ siteTitle='luvi.net'
 siteSubTitle='Exploring the beauty of simple web design&#x1F339;&#x1F41D;'
 site_url='luvi.net'
 meta_description='Take a moment for yourself, and enjoy something wonderful.'
+enabled_sites=(gameboy hanafuda memes live)
 
 conf_hide_paths _werc _docs
