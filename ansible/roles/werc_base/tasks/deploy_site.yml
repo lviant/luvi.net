@@ -5,6 +5,19 @@
         path: "/var/www/werc/sites/{{ werc_site }}"
         state: directory
 
+    - name: ensure _werc directory exists
+      file:
+        path: "/var/www/werc/sites/{{ werc_site }}/_werc"
+        state: directory
+
+    - debug:
+        msg: "{{ '.' | realpath }}"
+
+    - name: copy site werc config
+      template:
+        src: 'roles/werc_base/templates/_werc/config'
+        dest: "/var/www/werc/sites/{{ werc_site }}/_werc/config"
+
     # deprecated: needed as headers.tpl not inheriting properly when missing
     - name: sync default content
       synchronize:

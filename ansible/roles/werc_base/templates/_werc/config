@@ -1,0 +1,17 @@
+plan9port=$PLAN9
+path=($plan9port/bin . ./bin ./bin/contrib /bin /usr/bin)
+formatter=(fltr_cache md2html.awk)	# no perl for old men
+debug=true # Enable debugging, to disable set to ()
+enabled_apps=()
+
+{% if werc_site != 'luvi.net' %}masterSite='luvi.net'{% endif %}
+
+#pageTitle=''
+siteTitle='{% if werc_site != "luvi.net" %}{{ werc_site }}{% else %}luvi.net{% endif %}'
+siteSubTitle='{% if werc_site != "luvi.net" %}{{ werc_projects | selectattr("name", "equalto", werc_site) | map(attribute="desc") | first }}{% else %}Exploring the beauty of simple web design&#x1F339;&#x1F41D;{% endif %}'
+
+site_url='{% if werc_site != "luvi.net" %}{{ werc_projects | selectattr("name", "equalto", werc_site) | map(attribute="url") | first }}{% endif %}'
+enabled_sites=({% for site in enabled_werc_sites %}{{ site | split('.') | first }} {% endfor %})
+meta_description='{% if werc_site != "luvi.net"%}{{ werc_projects | selectattr("name", "equalto", werc_site) | map(attribute="meta_desc") | first }}{% else %}Take a moment for yourself, and enjoy something wonderful.{% endif %}'
+
+conf_hide_paths _werc _docs

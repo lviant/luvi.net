@@ -23,8 +23,8 @@
     <meta property="og:title" content="%($pageTitle%)" />
     <meta property="twitter:title" content="%($pageTitle%)" />
 
-    <meta property="og:url" content="https://%($site_url%)/" />
-    <meta property="twitter:url" content="https://%($site_url%)/" />
+    <meta property="og:url" content="%($site_url%)" />
+    <meta property="twitter:url" content="%($site_url%)" />
 % }
 
     <meta property="og:type" content="website" />
