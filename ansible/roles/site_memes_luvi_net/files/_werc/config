@@ -27,6 +27,8 @@ debug=true
 enabled_apps=()
 
 # Default site variables, must be set in initrc.local or _werc/config, only siteTitle is required.
-#masterSite=cat-v.org # Not required!
+masterSite='luvi.net'
 siteTitle='a junk drawer of memes'
 #siteSubTitle=''
+site_url='memes.luvi.net'
+meta_description='𝖑ℴ𝖔𝓀 𝓂𝖆, 𝒾𝖒 𝖘𝒸𝖍ℯ𝖒𝒾𝖓ℊ 𝒶𝖓𝒹 𝓂𝖊𝓂𝖎𝓃𝖌'

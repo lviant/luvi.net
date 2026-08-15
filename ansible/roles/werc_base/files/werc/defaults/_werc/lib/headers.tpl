@@ -6,24 +6,7 @@
 % # Legacy charset declaration for backards compatibility with non-html5 browsers.
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
 
-    <!-- Primary Meta Tags -->
-    <meta name="title" content="luvi.net Exploring the beauty of simple web design&#x1F339;&#x1F41D;" />
-    <meta name="description" content="Take a moment for yourself, and enjoy something wonderful." />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://luvi.net/" />
-    <meta property="og:title" content="luvi.net Exploring the beauty of simple web design&#x1F339;&#x1F41D;" />
-    <meta property="og:description" content="Take a moment for yourself, and enjoy something wonderful." />
-
-    <!-- X (Twitter) -->
-    <meta property="twitter:url" content="https://luvi.net/" />
-    <meta property="twitter:title" content="luvi.net Exploring the beauty of simple web design&#x1F339;&#x1F41D;" />
-    <meta property="twitter:description" content="Take a moment for yourself, and enjoy something wonderful." />
-
-    <!-- Meta Tags Generated with https://metatags.io -->
-
-    <link rel="stylesheet" href="/pub/style/style.css" type="text/css" media="screen, handheld" title="default">
+    <link rel="stylesheet" href="/pub/style/style.css" type="text/css" media="screen" title="default">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -32,24 +15,30 @@
 %    echo '    <link rel="stylesheet" href="/_werc/pub/style.css" type="text/css" media="screen" title="default">'
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="application-name" content="luvi-net">
-    <meta name="author" content="Luis Viant">
     <meta name="keywords" content="Luis Viant, Viant, luvi, gameboy, hanafuda, photography, game boy, memes, go, golang">
 
-% if(! ~ $#meta_description 0)
+% {
+    <meta name="title" content="%($pageTitle%)" />
+
+    <meta property="og:title" content="%($pageTitle%)" />
+    <meta property="twitter:title" content="%($pageTitle%)" />
+
+    <meta property="og:url" content="https://%($site_url%)/" />
+    <meta property="twitter:url" content="https://%($site_url%)/" />
+% }
+
+    <meta property="og:type" content="website" />
+
+% if(! ~ $#meta_description 0) {
+    <meta name="description" content="%($meta_description%)" />
+    <meta property="og:description" content="%($meta_description%)" />
+% }
 
 % h = `{get_lib_file headers.inc}
 % if(! ~ $#h 0)
 %   cat $h
 
     %($"extraHeaders%)
-
-    <div class="h-card" hidden>
-        <a class="p-name u-email" href="mailto:lu@luvi.net">Luis Viant</a>
-        <a class="h-card p-org u-url" rel="me" href="https://luvi.net/">luvi.net</a>
-		<img class="u-photo" src="https://avatars.githubusercontent.com/u/5025623?s=400&u=cbd54fd93869db9cb15683e9e852cf4c7f543f04&v=4"></img>
-		<span class="p-note">Hello, I'm Lu &#x1F44B; I'm a tech worker and evangelist, infrastructure engineer, fledgling Go programmer, and photographer. This site is a collection of my thoughts, art, projects and interests in the form of a <i>lo-web</i> home page notwithstanding a lack a social media engagement.</span>
-    </div>
 
 </head>
 <body>

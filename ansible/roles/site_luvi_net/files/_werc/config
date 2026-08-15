@@ -30,5 +30,7 @@ enabled_apps=()
 #masterSite=cat-v.org # Not required!
 siteTitle='luvi.net'
 siteSubTitle='Exploring the beauty of simple web design&#x1F339;&#x1F41D;'
+site_url='luvi.net'
+meta_description='Take a moment for yourself, and enjoy something wonderful.'
 
 conf_hide_paths _werc _docs
