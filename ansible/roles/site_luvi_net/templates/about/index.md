@@ -6,7 +6,7 @@
 
 ### `whoami`
 
-Hello, I'm Lu &#x1F44B; I'm a tech worker and evangelist, infrastructure engineer, fledgling Go programmer, and photographer. This site is a collection of my thoughts, art, projects and interests in the form of a _lo-web_ home page notwithstanding a lack a social media engagement.
+Hello, I'm Lu &#x1F44B; I'm a tech worker and evangelist, infrastructure engineer, fledgling Go programmer, and photographer. This site is a collection of my thoughts, art, projects and interests in the form of a _lo-web_ home page notwithstanding a lack a social media engagement. I could be best described as a the product of a dance between artistic praxis, esoteric understanding of digital technology, ontological curiosity, and psychotropics.
 
 ### Tech stuff
 
