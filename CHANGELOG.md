@@ -1,12 +1,6 @@
-# Changelog
+# &#x1F4DD; Changelog
 
-This changelog records notable releases of luvi.net for readers who track werc and Ansible infrastructure changes alongside front-end site features. Format follows [Keep a Changelog](https://keepachangelog.com/).
-
-## Versioning
-
-Versions use only `<major>.<minor>`. A minor release marks a new werc or Ansible revision, such as a deploy pipeline change, role restructure, or templating update. A minor release also covers a new front-end feature or subsite. A major release is reserved for a site-wide redesign or a new subsite launch. The site remains pre-1.0.
-
-Content-only changes, such as adding a single meme image, do not receive their own version. They appear as a note under the nearest surrounding release instead.
+This is a record notable luvi.net releases for those of you morbidly curious enough track to track the feature release or the sites content and deployment. Format follows [Keep a Changelog](https://keepachangelog.com/).
 
 ## [v0.6] - 2026-08-15
 
